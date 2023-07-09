@@ -3,6 +3,7 @@
 import { CacheProvider } from '@chakra-ui/next-js'
 import { Box, ChakraProvider } from '@chakra-ui/react'
 import NavbarComponent from './components/navbar'
+import theme from './theme'
 
 export function Providers({
   children
@@ -11,7 +12,7 @@ export function Providers({
 }) {
   return (
     <CacheProvider>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Box
           bgColor={"blackAlpha.700"}
           backgroundImage={
