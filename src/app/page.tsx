@@ -6,6 +6,7 @@ import { Box, Circle, Container, Flex, HStack, Text, VStack } from "@chakra-ui/r
 import Hero from "./components/LandingPage/hero";
 import Footer from "./components/footer";
 import { MAIN_COLOR, SECONDARY_COLOR, TERTIARY_COLOR } from "@/constant";
+import { Providers } from "./providers";
 
 const POINT_ICON_SIZE = 40;
 
@@ -50,96 +51,98 @@ const services = [
 
 export default function Home() {
   return (
-    <Box>
-      <Hero />
-      <Container maxW="container.xl">
-
-        <Flex
-          bgGradient={`linear(to-b, ${SECONDARY_COLOR}, #05113D00)`}
-          pt={12}
-          pb={10}
-          rounded={'50px'}
-          justifyContent={{
-            base: 'center',
-            md: 'space-evenly',
-          }}
-          alignItems={'center'}
-          gap={{
-            base: 5,
-            md: 10,
-          }}
-          textAlign={'center'}
-          wrap={'wrap'}
-        >
-          {
-            points.map((point, index) => (
-              <VStack key={index}>
-                <Circle
-                  size="150px"
-                  bgGradient={`linear(to-b, ${point.circleColor}, #05113D00)`}
-                >
-                  <Circle size="125px" bg={SECONDARY_COLOR}>
-                    {point.icon}
-                  </Circle>
-                </Circle>
-
-                <Text fontSize={'1.3rem'} fontWeight={600}>
-                  {point.title}
-                  <br />
-                  {point.completed}
-                </Text>
-              </VStack>
-            ))
-          }
-        </Flex>
-
-        <Box
-        py={"10rem"}
-        >
-          <Text
-            fontSize={'2rem'}
-            fontWeight={600}
-            mb={10}
-          >Services we offer</Text>
+    <Providers>
+      <Box>
+        <Hero />
+        <Container maxW="container.xl">
 
           <Flex
-            justify={{
-              base: 'space-between',
+            bgGradient={`linear(to-b, ${SECONDARY_COLOR}, #05113D00)`}
+            pt={12}
+            pb={10}
+            rounded={'50px'}
+            justifyContent={{
+              base: 'center',
               md: 'space-evenly',
-              sm: 'space-evenly',
             }}
+            alignItems={'center'}
             gap={{
-              base: 10,
+              base: 5,
+              md: 10,
             }}
+            textAlign={'center'}
             wrap={'wrap'}
           >
             {
-              services.map((service, index) => (
-                <VStack
-                  key={index}
-                  bg={TERTIARY_COLOR}
-                  color={'black'}
-                  fontWeight={500}
-                  maxW={'370px'}
-                  p={10}
-                  textAlign={'center'}
-                  rounded={'xl'}
-                >
-                  {service.icon}
-                  <Text
-                    fontSize={'1.2rem'}
-                    fontWeight={600}
-                    mt={3}
-                  >{service.title}</Text>
-                  <Text>{service.description}</Text>
+              points.map((point, index) => (
+                <VStack key={index}>
+                  <Circle
+                    size="150px"
+                    bgGradient={`linear(to-b, ${point.circleColor}, #05113D00)`}
+                  >
+                    <Circle size="125px" bg={SECONDARY_COLOR}>
+                      {point.icon}
+                    </Circle>
+                  </Circle>
+
+                  <Text fontSize={'1.3rem'} fontWeight={600}>
+                    {point.title}
+                    <br />
+                    {point.completed}
+                  </Text>
                 </VStack>
               ))
             }
           </Flex>
-        </Box>
-      </Container>
 
-      <Footer />
-    </Box>
+          <Box
+            py={"10rem"}
+          >
+            <Text
+              fontSize={'2rem'}
+              fontWeight={600}
+              mb={10}
+            >Services we offer</Text>
+
+            <Flex
+              justify={{
+                base: 'space-between',
+                md: 'space-evenly',
+                sm: 'space-evenly',
+              }}
+              gap={{
+                base: 10,
+              }}
+              wrap={'wrap'}
+            >
+              {
+                services.map((service, index) => (
+                  <VStack
+                    key={index}
+                    bg={TERTIARY_COLOR}
+                    color={'black'}
+                    fontWeight={500}
+                    maxW={'370px'}
+                    p={10}
+                    textAlign={'center'}
+                    rounded={'xl'}
+                  >
+                    {service.icon}
+                    <Text
+                      fontSize={'1.2rem'}
+                      fontWeight={600}
+                      mt={3}
+                    >{service.title}</Text>
+                    <Text>{service.description}</Text>
+                  </VStack>
+                ))
+              }
+            </Flex>
+          </Box>
+        </Container>
+
+        <Footer />
+      </Box>
+    </Providers>
   );
 }
