@@ -26,11 +26,7 @@ export default function NavbarComponent() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box bgColor={"black"}
-    
-    borderBottom={1}
-    borderStyle={'solid'}
-    borderColor={'gray.900'}
+    <Box
     >
       <Flex
         bg={'black.700'}
@@ -58,7 +54,7 @@ export default function NavbarComponent() {
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
-            fontWeight={600}
+            fontWeight={800}
             fontSize={'3xl'}
             color={'white'}>
             WeBuild
@@ -104,9 +100,9 @@ const DesktopNav = () => {
 
   return (
     <Stack direction={'row'}
-    spacing={4} align={{
-      base: 'center',
-    }}>
+      spacing={4} align={{
+        base: 'center',
+      }}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -117,9 +113,12 @@ const DesktopNav = () => {
                 fontSize={'sm'}
                 fontWeight={500}
                 color={linkColor}
+                borderBottom={'2px solid'}
+                borderColor={'transparent'}
                 _hover={{
                   textDecoration: 'none',
                   color: linkHoverColor,
+                  borderColor: MAIN_COLOR,
                 }}>
                 {navItem.label}
               </Link>
