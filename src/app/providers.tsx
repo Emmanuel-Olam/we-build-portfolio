@@ -14,7 +14,7 @@ export function Providers({
     <CacheProvider>
       <ChakraProvider theme={theme}>
         <Box
-          bgColor={"blackAlpha.700"}
+          bgColor={"blackAlpha.600"}
           backgroundImage={
             'url(/bg.png)'
           }

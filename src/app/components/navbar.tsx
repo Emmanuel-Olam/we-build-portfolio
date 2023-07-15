@@ -13,6 +13,7 @@ import {
   PopoverContent,
   useBreakpointValue,
   useDisclosure,
+  Image,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -29,7 +30,7 @@ export default function NavbarComponent() {
     <Box
     >
       <Flex
-        bg={'black.700'}
+        bg={'transparent'}
         color={'white'}
         minH={'80px'}
         maxW={'8xl'}
@@ -51,14 +52,16 @@ export default function NavbarComponent() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            fontWeight={800}
-            fontSize={'3xl'}
-            color={'white'}>
-            WeBuild
-          </Text>
+          <Box
+            w={{
+              base: '150px',
+              md: '200px'
+            }}
+            h={"80px"}
+          >
+            <Image
+              src="/logo.png" alt="Future builders agency" width={'100%'} height={'100%'} objectFit={'cover'} borderRadius={'md'} />
+          </Box>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={'auto'} mr={10}>
             <DesktopNav />
@@ -128,7 +131,7 @@ const DesktopNav = () => {
               <PopoverContent
                 border={0}
                 boxShadow={'xl'}
-                bg={popoverContentBgColor}
+                bg={'transparent'}
                 p={4}
                 rounded={'xl'}
                 minW={'sm'}>
@@ -183,7 +186,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 const MobileNav = () => {
   return (
     <Stack
-      bg={'gray.800'}
+      bg={'transparent'}
       p={4}
       display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
@@ -257,14 +260,14 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: 'Portfolio',
-    href: '#',
+    href: '#portfolio',
   },
   {
     label: 'About Us',
-    href: '#',
+    href: '#about',
   },
   {
     label: 'Contact Us',
-    href: '#',
+    href: '#contact',
   },
 ];

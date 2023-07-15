@@ -82,7 +82,7 @@ export default function Hero() {
                   _hover={{
                     bg: MAIN_COLOR,
                   }}>
-                  {"Let's Talk"}
+                  <Link href="#contact">{"Let's Talk"}</Link>
                 </Button>
               </Stack>
             </Stack>
