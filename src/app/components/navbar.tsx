@@ -91,6 +91,25 @@ export default function NavbarComponent() {
 
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
+        <Stack
+          flex={{ base: 1, md: 0 }}
+          direction={'row'}
+          px={4}
+          spacing={6}>
+          <Button
+            as={'a'}
+            display={'inline-flex'}
+            fontSize={'sm'}
+            fontWeight={600}
+            color={'white'}
+            bg={MAIN_COLOR}
+            href={'#'}
+            _hover={{
+              bg: MAIN_COLOR,
+            }}>
+            Download CV
+          </Button>
+        </Stack>
       </Collapse>
     </Box>
   );
