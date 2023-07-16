@@ -1,4 +1,3 @@
-import { title } from "process";
 import { Project } from "./app/interfaces/project";
 import { ProjectsRecord, getXataClient } from "./xata";
 

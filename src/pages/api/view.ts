@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { ErrorResponse } from "../error";
+import { ErrorResponse } from "../../error";
 import { getProject, getProjects, serializeProjects } from "@/services";
 
 export default async function handler(
