@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Ayanwola-Ayomide-s-workspace-rf6f4c.us-east-1.xata.sh/db/we-build-db",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

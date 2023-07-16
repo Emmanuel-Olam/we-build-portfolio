@@ -1,0 +1,11 @@
+{
+  "id": "mig_cipjknkk5v5e718u5ut0",
+  "checksum": "1:db07291baca72e37d2e201b7e6ee7a31be0ad3ee52caff8f3d1c9ba59d741ca1",
+  "operations": [
+    {
+      "addTable": {
+        "table": "projects"
+      }
+    }
+  ]
+}

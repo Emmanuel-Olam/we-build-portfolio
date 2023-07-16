@@ -1,0 +1,16 @@
+{
+  "id": "mig_cipjsg2dcqdu169vunmg",
+  "parentID": "mig_cipjsb2dcqdu169vunlg",
+  "checksum": "1:8beb647882c3ab683b20fa7a83f677f622efcd11a2a2da8798893487b4e0ca3b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "image",
+          "type": "string"
+        },
+        "table": "projects"
+      }
+    }
+  ]
+}
