@@ -100,9 +100,6 @@ export default function Page() {
                             <ViewIcon />
                           </Button>
                         </Link>
-                        <Button colorScheme="red" size="sm">
-                          <DeleteIcon />
-                        </Button>
                       </ButtonGroup>
                     </Td>
                   </Tr>
