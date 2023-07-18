@@ -1,0 +1,12 @@
+{
+  "id": "mig_ciratssp59ups3avffs0",
+  "parentID": "mig_cipjsqr9bd0i2brau11g",
+  "checksum": "1:86a3ca5520e74be3bfdd009b7a9e06ed03da88b14c9397523a47bcd3b0500ad8",
+  "operations": [
+    {
+      "addTable": {
+        "table": "reviews"
+      }
+    }
+  ]
+}

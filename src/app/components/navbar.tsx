@@ -59,8 +59,10 @@ export default function NavbarComponent() {
             }}
             h={"80px"}
           >
+            <Link href={'/'}>
             <Image
               src="/logo.png" alt="Future builders agency" width={'100%'} height={'100%'} objectFit={'cover'} borderRadius={'md'} />
+            </Link>
           </Box>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={'auto'} mr={10}>

@@ -11,6 +11,8 @@ import { AboutUs } from "./components/about";
 import ContactUs from "./components/contact";
 
 import "./globals.css";
+import { Reviews } from "./components/reviews";
+import { Teams } from "./components/teams";
 
 
 export default function Home() {
@@ -22,7 +24,9 @@ export default function Home() {
           <Points />
           <Services />
           <Projects />
+          <Reviews />
           <AboutUs />
+          <Teams />
         </Container>
         <ContactUs />
         <Footer />

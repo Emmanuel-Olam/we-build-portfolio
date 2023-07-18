@@ -1,0 +1,16 @@
+{
+  "id": "mig_cirau7onod8oco62on5g",
+  "parentID": "mig_cirau50nod8oco62on4g",
+  "checksum": "1:aac97e6f077f9c37cbfb6c2b305cc9bc326f6467c8399fcf78d3fab8f3fd5670",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "project",
+          "type": "string"
+        },
+        "table": "reviews"
+      }
+    }
+  ]
+}

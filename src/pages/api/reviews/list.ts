@@ -1,14 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { ErrorResponse } from "../../error";
-import { ProjectService } from "@/services";
+import { ErrorResponse } from "../../../error";
+import { ReviewService } from "@/services";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
-    const projects = ProjectService.serialize(await ProjectService.getAll());
-    res.status(200).json({ data: projects });
+    const reviews = ReviewService.serialize(await ReviewService.getAll());
+    res.status(200).json({ data: reviews });
   } catch (e) {
     return ErrorResponse(e, res);
   }

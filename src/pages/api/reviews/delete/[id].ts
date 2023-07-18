@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { ErrorResponse } from "../../../error";
-import { ProjectService } from "@/services";
+import { ErrorResponse } from "../../../../error";
+import { ReviewService } from "@/services";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,11 +10,13 @@ export default async function handler(
   req.url = id;
 
   try {
-    const project = await ProjectService.delete(id);
-    if (!project) {
-      return res.status(404).json({ message: "Not found" });
+    const review = await ReviewService.delete(id);
+
+    if (!review) {
+      return res.status(404).end();
     }
-    res.status(204).end();
+
+    res.status(204).json({ data: review.toSerializable() });
   } catch (e) {
     return ErrorResponse(e, res);
   }

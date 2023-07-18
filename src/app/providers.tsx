@@ -15,18 +15,18 @@ export function Providers({
   children: React.ReactNode
 }) {
 
-  useNavigationEvent({
-    on: {
-      routeChanged: ({ pathname, searchParams }) => {
-        NProgress.start()
-      }
-    },
-    off: {
-      routeChanged: ({ pathname, searchParams }) => {
-        NProgress.done()
-      }
-    }
-  })
+  // useNavigationEvent({
+  //   on: {
+  //     routeChanged: ({ pathname, searchParams }) => {
+  //       NProgress.start()
+  //     }
+  //   },
+  //   off: {
+  //     routeChanged: ({ pathname, searchParams }) => {
+  //       NProgress.done()
+  //     }
+  //   }
+  // })
 
   return (
     <CacheProvider>

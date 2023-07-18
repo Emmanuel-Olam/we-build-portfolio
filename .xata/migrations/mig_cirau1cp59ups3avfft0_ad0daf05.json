@@ -1,0 +1,16 @@
+{
+  "id": "mig_cirau1cp59ups3avfft0",
+  "parentID": "mig_ciratssp59ups3avffs0",
+  "checksum": "1:ad0daf056a6da03ec9544d279eac7a7a7b70ed38fb76bd7f3643dbc52687c18e",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "name",
+          "type": "string"
+        },
+        "table": "reviews"
+      }
+    }
+  ]
+}

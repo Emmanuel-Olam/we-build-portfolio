@@ -1,11 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { ErrorResponse } from "../../error";
-import {
-  createProject,
-  getProjectByTitle,
-} from "@/services";
 import { DynamicObject } from "@/app/interfaces/utils";
 import { ProjectKind, ProjectStatus } from "@/app/interfaces/project";
+import { ProjectService } from "@/services";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,7 +13,7 @@ export default async function handler(
   try {
     // Validations
     const errors = {} as DynamicObject;
-    const found = await getProjectByTitle(title);
+    const found = await ProjectService.getProjectByTitle(title);
     if (found) {
       errors["title"] = "Title already exists";
     }
@@ -26,7 +23,7 @@ export default async function handler(
     }
 
     // Create project
-    const project = await createProject({
+    const project = await ProjectService.create({
       title,
       description,
       image,

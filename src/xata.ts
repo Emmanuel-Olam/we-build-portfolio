@@ -18,6 +18,15 @@ const tables = [
       { name: "kind", type: "string" },
     ],
   },
+  {
+    name: "reviews",
+    columns: [
+      { name: "name", type: "string" },
+      { name: "body", type: "text" },
+      { name: "image", type: "string" },
+      { name: "project", type: "string" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -26,8 +35,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Projects = InferredTypes["projects"];
 export type ProjectsRecord = Projects & XataRecord;
 
+export type Reviews = InferredTypes["reviews"];
+export type ReviewsRecord = Reviews & XataRecord;
+
 export type DatabaseSchema = {
   projects: ProjectsRecord;
+  reviews: ReviewsRecord;
 };
 
 const DatabaseClient = buildClient();
