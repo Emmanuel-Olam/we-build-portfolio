@@ -1,6 +1,5 @@
 "use client";
 
-import { Project, ProjectKind, ProjectStatus } from "@/app/interfaces/project";
 import { TReview } from "@/app/interfaces/reviews";
 import { capsFirst } from "@/app/utils";
 import { ADMIN } from "@/constant";
@@ -12,14 +11,10 @@ import {
   ButtonGroup,
   FormControl,
   FormLabel,
-  Input,
-  Textarea,
-  Select,
   VStack,
   Skeleton,
   Image,
   Text,
-  Badge,
   useDisclosure,
   Modal,
   ModalOverlay,

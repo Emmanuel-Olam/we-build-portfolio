@@ -217,7 +217,7 @@ const Slider = ({
         <Progress
           value={percentage(activeItem, positions.length - constraint)}
           alignSelf="center"
-          opacity={0}
+          opacity={.5}
           borderRadius="2px"
           bg="base.d100"
           flex={1}
