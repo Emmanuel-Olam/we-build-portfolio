@@ -82,7 +82,8 @@ export default function NavbarComponent() {
             fontWeight={600}
             color={'white'}
             bg={MAIN_COLOR}
-            href={'#'}
+            target='_blank'
+            href={'https://asset.cloudinary.com/dpfpplv6k/52591cc0a1dbbe23cb67ae0e1205dd2d'}
             _hover={{
               bg: MAIN_COLOR,
             }}>
