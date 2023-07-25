@@ -1,8 +1,26 @@
 import { MAIN_COLOR } from "@/constant";
 import { Box, Button, Flex, FormControl, FormLabel, Heading, Image, Input, Textarea, VStack } from "@chakra-ui/react";
 import { ButtonComponent } from "./button";
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from "react";
 
 export default function ContactUs() {
+
+  const form = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    setIsLoading(true);
+    emailjs.sendForm('service_o4w7tll', 'template_7j6y0pp', form.current, 'xzLo7o-FxzbVKK7lP')
+      .then((result) => {
+        setIsLoading(false);
+      }, (error) => {
+        setIsLoading(false);
+      });
+  };
+
   return (
     <Box id="contact" bg={'blackAlpha.700'}>
 
@@ -34,7 +52,7 @@ export default function ContactUs() {
           <Box
             flex={1}
           >
-            <form action="" method="post" >
+            <form action="" method="post" onSubmit={sendEmail} ref={form}>
 
               <Heading fontSize="3rem" fontWeight="bold" mb={'4rem'}>
                 Contact Us
@@ -45,6 +63,7 @@ export default function ContactUs() {
                   <FormLabel color={MAIN_COLOR} fontWeight={'bold'} mb={4} fontSize={'1.1rem'}>Name:</FormLabel>
                   <Input
                     type='name'
+                    name="user_name"
                     placeholder="Enter your fullname"
                     border={'none'}
                     borderBottom={'1px solid #000'}
@@ -63,6 +82,7 @@ export default function ContactUs() {
                   <Input
                     type='email'
                     placeholder="Enter your email"
+                    name="user_email"
                     border={'none'}
                     borderBottom={'1px solid #000'}
                     borderRadius={0}
@@ -83,6 +103,7 @@ export default function ContactUs() {
                     borderBottom={'1px solid #000'}
                     borderRadius={0}
                     borderColor={'gray.400'}
+                    name="message"
                     px={'3px'}
                     _focus={{
                       borderColor: MAIN_COLOR,
@@ -93,7 +114,11 @@ export default function ContactUs() {
                 </FormControl>
               </VStack>
 
-              <ButtonComponent type='submit' bg={MAIN_COLOR} color={'white'} mt={'5rem'}>
+              <ButtonComponent
+              type='submit' bg={MAIN_COLOR} color={'white'} mt={'5rem'}
+              isLoading={isLoading}
+              loadingText="Sending"
+              >
                 Send message
               </ButtonComponent>
 
