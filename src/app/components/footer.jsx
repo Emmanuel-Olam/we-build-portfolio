@@ -29,7 +29,7 @@ export default function Footer() {
               <HStack spacing="4">
                 <Text>Phone: </Text>
                 <Text color={QUATERNARY_COLOR}>
-                  <a href="tel:+2349038965452">+234 903 896 5452</a>
+                  <a href="tel:+234901842988">+234 901842988</a>
                 </Text>
               </HStack>
             </VStack>

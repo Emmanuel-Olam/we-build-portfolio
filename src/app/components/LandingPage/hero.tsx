@@ -62,10 +62,11 @@ export default function Hero() {
                   sm: 'auto',
                 }}
               >
-                {`I help build decentralized applications and smart contracts based on blockchain technology. As well as Web  & Mobile App Development`}
+                {`We help build decentralized applications and smart contracts based on blockchain technology. As well as Web  & Mobile App Development`}
               </Text>
               <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-                <Button
+
+                <Link href="#contact"><Button
                   rounded={'md'}
                   size={'lg'}
                   bg={MAIN_COLOR}
@@ -81,9 +82,8 @@ export default function Hero() {
                   }}
                   _hover={{
                     bg: MAIN_COLOR,
-                  }}>
-                  <Link href="#contact">{"Let's Talk"}</Link>
-                </Button>
+                  }}>{"Let's Talk"}</Button></Link>
+
               </Stack>
             </Stack>
           </Flex>
