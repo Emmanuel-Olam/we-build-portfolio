@@ -103,7 +103,11 @@ export default function Hero() {
               transform={'translateX(-50%)'}
             ></Circle>
             <Image
-              alt='Login Image' src="/hero.png"
+              alt='Login Image' src="https://res.cloudinary.com/dpfpplv6k/image/upload/v1691016124/FUBA/IMG_8959_copy_ivipd8.png"
+              width={'700px'}
+              height={'400px'}
+              objectFit={'cover'}
+              objectPosition={'top'}
               position={'relative'}
               zIndex={2}
             />

@@ -1,5 +1,5 @@
 import { MAIN_COLOR, QUATERNARY_COLOR, TERTIARY_COLOR } from "@/constant";
-import { Box, Container, HStack, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Container, HStack, Heading, Image, Text, VStack } from "@chakra-ui/react";
 
 export default function Footer() {
   return (
@@ -22,7 +22,7 @@ export default function Footer() {
               <HStack spacing="4">
                 <Text>Email: </Text>
                 <Text color={QUATERNARY_COLOR}>
-                  <a href="mailto:lekzzicon@gmail.com">lekzzicon@gmail.com</a>
+                  <a href="mailto:futurebuildersagency@gmail.com">futurebuildersagency@gmail.com</a>
                 </Text>
               </HStack>
 
@@ -41,9 +41,16 @@ export default function Footer() {
             </Text>
 
             <HStack spacing="4" justify={'center'}>
-              <Text color={QUATERNARY_COLOR}><a href="#">Facebook</a></Text>
-              <Text color={QUATERNARY_COLOR}><a href="#">Twitter</a></Text>
-              <Text color={QUATERNARY_COLOR}><a href="#">LinkedIn</a></Text>
+
+              <Text color={QUATERNARY_COLOR}><a href="#">
+                <Image alt='Login Image' src="/icons/linkedin.png" /></a>
+              </Text>
+              <Text color={QUATERNARY_COLOR}><a href="#">
+                <Image alt='Login Image' src="/icons/twitter.png" /></a>
+              </Text>
+              <Text color={QUATERNARY_COLOR}><a href="#">
+                <Image alt='Login Image' src="/icons/facebook.png" /></a>
+              </Text>
             </HStack>
           </Box>
         </Box>
@@ -51,7 +58,7 @@ export default function Footer() {
       </Container>
 
       <HStack
-      mt={10}
+        mt={10}
       >
         <Text
           fontSize="sm"

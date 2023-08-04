@@ -22,7 +22,13 @@ import {
 import ChakraCarousel from "./carousel";
 
 export function Teams() {
-  const data = ["https://bit.ly/dan-abramov", "about/1.png", "about/2.png", 'https://cdn.pixabay.com/photo/2022/03/01/02/51/galaxy-7040416_1280.png',"https://bit.ly/dan-abramov", "about/1.png", "about/2.png", 'https://cdn.pixabay.com/photo/2022/03/01/02/51/galaxy-7040416_1280.png'];
+  const data = [
+    "https://res.cloudinary.com/dpfpplv6k/image/upload/v1691016232/FUBA/IMG_8925_zoac8a.jpg",
+    "https://res.cloudinary.com/dpfpplv6k/image/upload/v1691016334/FUBA/IMG_8918_-_Copy_j3nt1j.jpg",
+    "https://res.cloudinary.com/dpfpplv6k/image/upload/v1691014781/FUBA/IMG_8893_qdsirp.jpg",
+    "https://res.cloudinary.com/dpfpplv6k/image/upload/v1691014780/FUBA/IMG_8896_pvs85g.jpg",
+    "https://res.cloudinary.com/dpfpplv6k/image/upload/v1691017037/FUBA/IMG_8911_mogjy3.jpg"
+  ];
 
   return (
     <Container
