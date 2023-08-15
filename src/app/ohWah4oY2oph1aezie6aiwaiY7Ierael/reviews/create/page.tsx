@@ -85,26 +85,6 @@ export default function Page() {
           </FormControl>
 
           <FormControl
-            id="image"
-            onChange={formik.handleChange}
-            isInvalid={!!formik.errors.image && formik.touched.image}
-          >
-            <FormLabel fontWeight={600} fontSize={'1rem'} mb={4}>Image</FormLabel>
-            <Input type="text" />
-            <FormErrorMessage>{formik.errors.image}</FormErrorMessage>
-          </FormControl>
-
-          <FormControl
-            id="project"
-            onChange={formik.handleChange}
-            isInvalid={!!formik.errors.project && formik.touched.project}
-          >
-            <FormLabel fontWeight={600} fontSize={'1rem'} mb={4}>Project</FormLabel>
-            <Input type="text" />
-            <FormErrorMessage>{formik.errors.project}</FormErrorMessage>
-          </FormControl>
-
-          <FormControl
             id="body"
             onChange={formik.handleChange}
             isInvalid={!!formik.errors.body && formik.touched.body}

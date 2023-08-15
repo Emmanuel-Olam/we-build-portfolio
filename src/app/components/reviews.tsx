@@ -81,12 +81,6 @@ export function Reviews() {
                 <VStack
                   textAlign={'center'}
                 >
-                  <Avatar
-                    size='xl'
-                    name={review.name}
-                    src={review.image}
-                    mb={3}
-                  />
                   <VStack
                     mb={4}
                   >
@@ -95,12 +89,6 @@ export function Reviews() {
                     >
                       {capsFirst(review.name)}
                     </Heading>
-                    <Text
-                      fontSize={{ base: "sm", md: "md" }}
-                      color="gray.400"
-                    >
-                      {capsFirst(review.project)}
-                    </Text>
                   </VStack>
                   <Text>{capsFirst(review.body)}</Text>
                 </VStack>

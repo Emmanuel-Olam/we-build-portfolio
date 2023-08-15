@@ -71,7 +71,6 @@ export default function Page() {
                 #
               </Th>
               <Th>Name</Th>
-              <Th>Project</Th>
               <Th></Th>
             </Tr>
           </Thead>
@@ -84,9 +83,6 @@ export default function Page() {
                     <Td>{index + 1}</Td>
                     <Td>
                       {record.name}
-                    </Td>
-                    <Td>
-                      {record.project}
                     </Td>
                     <Td>
                       <ButtonGroup spacing={5}>

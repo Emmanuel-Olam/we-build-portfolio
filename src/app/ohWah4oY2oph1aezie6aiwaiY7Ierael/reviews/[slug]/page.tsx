@@ -95,18 +95,6 @@ export default function Page({ params }: { params: { slug: string } }) {
         </FormControl>
 
         <FormControl isDisabled>
-          <FormLabel fontWeight={600} fontSize={'1rem'} mb={4}>Image</FormLabel>
-          <Image src={record.image} alt={record.name} rounded={'md'} />
-        </FormControl>
-
-        <FormControl isDisabled>
-          <FormLabel fontWeight={600} fontSize={'1rem'} mb={4}>Project</FormLabel>
-          <Text>
-            {record.project}
-          </Text>
-        </FormControl>
-
-        <FormControl isDisabled>
           <FormLabel fontWeight={600} fontSize={'1rem'} mb={4}>Review</FormLabel>
           <Text>
             {record.body}
