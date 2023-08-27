@@ -39,7 +39,7 @@ const LearningFooter = () => {
           <Image src={instagram} alt="icon" className="" />
         </div>
         <Link href="#background">
-          <div className="w-[26px] h-[26px] bg-[#3B1D59] ml-auto mr-[0px]">
+          <div className="w-[26px] h-[26px] bg-[#3B1D59] ml-auto mr-[0px] mb-[17px]">
             <Image src={arrow} alt="icon" className="" />
           </div>
         </Link>
