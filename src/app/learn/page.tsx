@@ -10,6 +10,7 @@ import LearningFooter from "../components/learningFooter";
 import LearnFoot from "../components/learnFoot";
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
+import transporter from '../mailer.js'
 
 const people = [
   { course: 'Upwork Free Class' },
@@ -42,9 +43,34 @@ const Learning2 = () => {
     }));
   };
 
- 
-  const handleSubmit = () => {
+  //  const handleConnectChange = (selectedConnection) => {
+  //   setSelectConnect(selectedConnection);
+  // };
+  const handleSubmit = async() => {
     console.log('Form submitted:', { ...formData });
+    console.log("Form submitted:", selectConnect.connect, selected.course, );
+
+    const emailContent = `
+    Course: ${selected.course}
+    How did you hear about FUBA: ${selectConnect.connect}
+    // Include other form fields
+
+    // Additional information: ${formData}
+  `;
+
+  // Send the email
+  // try {
+  //   const info = await transporter.sendMail({
+  //     from: 'your_email@gmail.com', // Your email address
+  //     to: 'olamide@gmail.com', // Recipient's email address
+  //     subject: 'New Form Submission',
+  //     text: emailContent,
+  //   });
+
+  //   console.log('Email sent:', info.response);
+  // } catch (error) {
+  //   console.error('Error sending email:', error);
+  // }
   };
 
   useEffect(() => {
@@ -84,7 +110,7 @@ const Learning2 = () => {
                     <Listbox value={selected} onChange={setSelected}>
                       <div className="relative mt-1">
                         <label htmlFor="other_name" className='text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto'>SELECT  COURSE</label>
-                        <Listbox.Button className="relative w-full cursor-default rounded-lg bg-none py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000]" >
+                        <Listbox.Button className="relative w-full cursor-default rounded-lg bg-none py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] z-30" >
                           <span className="block truncate">
                             {selected.course}
                           </span>
@@ -94,8 +120,8 @@ const Learning2 = () => {
                         </Listbox.Button>
                         <Transition
                           as={Fragment}
-                          leave="transition ease-in duration-100"
-                          leaveFrom="opacity-100"
+                          leave="transition ease-in z-40 duration-100"
+                          leaveFrom="opacity-100 z-40"
                           leaveTo="opacity-0"
                         >
                           <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">

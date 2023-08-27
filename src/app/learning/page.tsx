@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/navigation';
 import "../globals.css";
 import { Providers } from "../providers";
 import { Box } from "@chakra-ui/react";
@@ -31,7 +31,7 @@ const Learning = () => {
     nationality: "",
     state: "",
   });
-
+console.log(formData)
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -40,13 +40,13 @@ const Learning = () => {
     }));
   };
 
-  const handleSaveAndContinue = () => {
-    // Save data to a state management solution or pass it as query parameters
-    router.push({
-      pathname: "/learn",
-      query: formData,
-    });
-  };
+  // const handleSaveAndContinue = () => {
+    
+  //   router.push({
+  //     pathname: "/learn",
+  //     query: formData,
+  //   });
+  // };
   return (
     <Providers>
       <Box>
@@ -188,8 +188,10 @@ const Learning = () => {
                   />
                 </div>
                 <button
+                type="button"
                   className="bg-[#3E205C] lg:text-[] text-[#fff] text-[16px] font-medium mt-[18px] w-[196px] h-[46px] rounded-[10px] "
-                  onClick={handleSaveAndContinue}
+                  onClick={() => router.push('/learn', [formData])}
+                  
                 >
                   Save and Continue
                 </button>
