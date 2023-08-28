@@ -1,9 +1,8 @@
 "use client";
-// import { useRouter } from 'next/router';
-import axios from "axios";
+
 import Image from "next/image";
 import uparrow from '../asset/uparrow.svg'
-import React, { useState, useEffect} from "react";
+import React, { useState} from "react";
 import "../globals.css";
 import { Providers } from "../providers";
 import { Box } from "@chakra-ui/react";
@@ -11,7 +10,8 @@ import LearningFooter from "./learningFooter";
 import LearnFoot from "./learnFoot";
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import transporter from '../api/sendMail/mailer'
+import { useForm } from "react-hook-form";
+import { useFormState } from "./FormContext";
 
 const people = [
   { course: 'Upwork Free Class' },
@@ -25,83 +25,36 @@ const connection = [
 
 ]
 
-const Learning2 = () => {
+type TFormValues = {
+  selected: string;
+  selectConnect:string;
+  goal:string;
+  addInfo: string;
+}
+
+const SecondStep = () => {
   // const router = useRouter();
+
+  const {  setFormData, formData } = useFormState(); 
+  const [isCreated, setCreated] = useState(false);
   const [selected, setSelected] = useState(people[0])
   const [selectConnect, setSelectConnect] = useState(connection[0])
 
-
-  const [formData, setFormData] = useState({
-    connection: "",
-    people: "",
-  })
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const { register, handleSubmit } = useForm<TFormValues>(
+    {defaultValues: formData}
+  );
+  const onHandleFormSubmit = (data: TFormValues) => {
+    // console.log(data)
+    setFormData((prevFormData) => ({ ...prevFormData, ...data }));
+    setCreated(true);
   };
 
-  //  const handleConnectChange = (selectedConnection) => {
-  //   setSelectConnect(selectedConnection);
-  // };
-  const handleSubmit = async () => {
-    
-    const emailData = {
-      selected,
-      selectConnect,
-      formData,
-    };
-
-    try {
-      const response = await axios.post('/api/sendEmail', emailData);
-      console.log('Response:', response.data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  
-    // Prepare the email content
-    const emailContent = `
-      Course: ${selected.course}
-      How did you hear about FUBA: ${selectConnect.connect}
-      // Include other form fields
-  
-      // Additional information: ${formData}
-    `;
-  
-    // Send the email
-    try {
-      const info = await transporter.sendMail({
-        from: 'your_email@gmail.com', // Your email address
-        to: 'futurebuildersagency@gmail.com', // Recipient's email address
-        subject: 'New Form Submission',
-        text: emailContent,
-      });
-  
-      console.log('Email sent:', info.response);
-    } catch (error) {
-      console.error('Error sending email:', error);
-    }
-  };
-
-  useEffect(() => {
-    setFormData({
-      connection: selectConnect.connect,   // Use selected connection from state
-      people: selected.course,          // Use selected course from state
-    });
-  }, [selected, selectConnect]);
-
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     setFormData({
-  //       connection: router.query.selectConnect.connect as string,
-  //       people: router.query. selected.course as string,
-  //     });
-  //   }
-  // }, [router.query]);
   return (
+    isCreated ? (
+    <div>
+      <h1>Form submitted Successfully</h1>
+      {/* <pre>{JSON.stringify(formData)}</pre> */}
+    </div>) : 
     <>
       <Providers>
         <Box>
@@ -118,9 +71,9 @@ const Learning2 = () => {
                 <div className="text-[18px] lg:text-[34px] text-[#fff] font-bold lg:mx-auto">
                   Registration Info.
                 </div>
-                <form>
+                <form onSubmit={handleSubmit(onHandleFormSubmit)}>
                   <div className="mt-[19px]">
-                    <Listbox value={selected} onChange={setSelected}>
+                    <Listbox {...register("selected")} onChange={setSelected}>
                       <div className="relative mt-1">
                         <label htmlFor="other_name" className='text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto'>SELECT  COURSE</label>
                         <Listbox.Button className="relative w-full cursor-default rounded-lg bg-none py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] z-30" >
@@ -177,7 +130,7 @@ const Learning2 = () => {
                     </Listbox>
                   </div>
                   <div className="mt-[19px] ">
-                    <Listbox value={selectConnect} onChange={setSelectConnect}>
+                    <Listbox {...register("selectConnect")} onChange={setSelectConnect}>
                       <div className="relative mt-1">
                         <label htmlFor="other_name" className='text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto'>HOW DID YOU HEAR ABOUT FUBA?</label>
                         <Listbox.Button className="relative w-full cursor-default rounded-lg bg-none py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] z-20">
@@ -231,17 +184,17 @@ const Learning2 = () => {
                   </div>
                   <div className="mt-[19px]">
                   <label htmlFor="other" className='text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto '>WHAT IS YOUR GOAL OF FREELANCING?</label>
-                  <textarea placeholder="Type..." className="w-[337px] h-[106px] rounded-[5px] border shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] bg-[#0000] pt-[9px] pl-[15px] mt-[10px] " id="message" />
+                  <textarea placeholder="Type..." {...register("goal")} className="w-[337px] h-[106px] rounded-[5px] border shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] bg-[#0000] pt-[9px] pl-[15px] mt-[10px] " id="message" />
                   </div>
                   <div className="mt-[19px]">
                   <label htmlFor="other" className='text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto '>ADDITIONAL INFORMATION</label>
-                  <textarea placeholder="Type..." className="w-[337px] h-[106px] rounded-[5px] border shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] bg-[#0000] pt-[9px] pl-[15px] mt-[10px] " id="message" />
+                  <textarea placeholder="Type..." {...register("addInfo")} className="w-[337px] h-[106px] rounded-[5px] border shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] bg-[#0000] pt-[9px] pl-[15px] mt-[10px] " id="message" />
                   </div>
                   <div className="mt-[19px] mb-[17px]">
                   <input type="checkbox" id="checkbox" className="black"/>
                   <label htmlFor="checkbox" className="text-[11px] ml-[6px]">I hereby agree to the terms of service</label>
                   </div>
-                  <button  className='bg-[#3E205C] lg:text-[] text-[#fff] text-[16px] font-medium mt-[18px] w-[196px] h-[46px] rounded-[10px] ' onClick={handleSubmit}>Submit</button>
+                  <button type="submit" className='bg-[#3E205C] lg:text-[] text-[#fff] text-[16px] font-medium mt-[18px] w-[196px] h-[46px] rounded-[10px] '>Submit</button>
                 </form>
                 <LearningFooter />
               </div>
@@ -254,4 +207,4 @@ const Learning2 = () => {
   );
 };
 
-export default Learning2;
+export default SecondStep;

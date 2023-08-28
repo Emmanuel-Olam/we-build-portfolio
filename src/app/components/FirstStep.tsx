@@ -8,6 +8,7 @@ import "../globals.css";
 import LearningFooter from "./learningFooter";
 import LearnFoot from "./learnFoot";
 import { useForm } from "react-hook-form";
+import { useFormState } from "./FormContext";
 
 
 type TFormValues = {
@@ -32,12 +33,13 @@ type TFormValues = {
 //   state: string;
 // }
 const FirstStep = () => {
+  const { onHandleNext, setFormData } = useFormState();
 
-  const { } = useForm();
   const { register, handleSubmit } = useForm<TFormValues>();
 
   const onHandleFormSubmit = (data: TFormValues) => {
-    console.log(data)
+    setFormData((prevFormData) => ({ ...prevFormData, ...data }));
+    onHandleNext()
   };
 
 
@@ -103,7 +105,7 @@ const FirstStep = () => {
               <div className="text-[18px] lg:text-[34px] text-[#fff] font-bold lg:mx-auto">
                 Personal Information
               </div>
-              <form className="lg:w-[768px]"  onSubmit={handleSubmit(onHandleFormSubmit)}>
+              <form className="lg:w-[768px]" onSubmit={handleSubmit(onHandleFormSubmit)} >
                 <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
                   <label
                     htmlFor="first_name"
@@ -116,6 +118,7 @@ const FirstStep = () => {
                     className="lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
                     placeholder="Enter"
                     {...register("firstName")}
+                    required={true}
                     // onChange={handleInputChange}
                   />
                 </div>
@@ -132,6 +135,7 @@ const FirstStep = () => {
                     // name="otherName"
                     type="name"
                     {...register("otherName")}
+                    required={true}
                   />
                 </div>
                 <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
@@ -147,6 +151,7 @@ const FirstStep = () => {
                     type="name"
                     // name="gender"
                     {...register("gender")}
+                    required={true}
                     // onChange={handleInputChange}
                   />
                 </div>
@@ -175,6 +180,7 @@ const FirstStep = () => {
                     type="email"
                     // name="email"
                     {...register("email")}
+                    required={true}
                     // onChange={handleInputChange}
                   />
                 </div>
@@ -207,6 +213,7 @@ const FirstStep = () => {
                     type="name"
                     // name="nationality"
                     {...register("nationality")}
+                    required={true}
                     // onChange={handleInputChange}
                   />
                 </div>
@@ -223,11 +230,12 @@ const FirstStep = () => {
                     type="name"
                     // name="state"
                     {...register("state")}
+                    required={true}
                     // onChange={handleInputChange}
                   />
                 </div>
                 <button
-                type="button"
+                type="submit"
                   className="bg-[#3E205C] lg:text-[] text-[#fff] text-[16px] font-medium mt-[18px] w-[196px] h-[46px] rounded-[10px] "
                   // onClick={handleSaveAndContinue}
                   

@@ -14,6 +14,8 @@ import "./globals.css";
 import { Reviews } from "./components/reviews";
 import { Teams } from "./components/teams";
 
+import dotenv from 'dotenv';
+dotenv.config(); // Load environment variables from .env file
 
 export default function Home() {
   return (
