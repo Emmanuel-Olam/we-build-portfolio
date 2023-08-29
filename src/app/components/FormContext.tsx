@@ -9,8 +9,8 @@ interface IFormData {
   age: number;
   nationality: string;
   state: string;
-  // course: string;
-  // connect:string;
+  people: string;
+  connection:string;
   goal:string;
   addInfo: string;
 } 
@@ -36,8 +36,8 @@ const FormContext = createContext<IFormContext>({
     age: 0,
     nationality: "",
     state: "",
-    selected: "",
-    selectConnect: "",
+    people: "",
+    connection: "",
     goal: "",
     addInfo: "",
 
@@ -63,8 +63,8 @@ export function FormProvider({ children }: IProps) {
       age: 0,
       nationality: "",
       state: "",
-      selected: "",
-      selectConnect: "",
+      people: "",
+      connection: "",
       goal: "",
       addInfo: "",
   

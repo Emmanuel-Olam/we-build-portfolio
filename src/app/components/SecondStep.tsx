@@ -12,6 +12,7 @@ import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import { useFormState } from "./FormContext";
+import transporter from "./mailer";
 
 const people = [
   { course: 'Upwork Free Class' },
@@ -26,8 +27,9 @@ const connection = [
 ]
 
 type TFormValues = {
-  selected: string;
-  selectConnect:string;
+  course: string;
+  people: string;
+  connection:string;
   goal:string;
   addInfo: string;
 }
@@ -43,10 +45,46 @@ const SecondStep = () => {
   const { register, handleSubmit } = useForm<TFormValues>(
     {defaultValues: formData}
   );
-  const onHandleFormSubmit = (data: TFormValues) => {
+  const onHandleFormSubmit = async (data: TFormValues) => {
     // console.log(data)
     setFormData((prevFormData) => ({ ...prevFormData, ...data }));
     setCreated(true);
+
+     // Prepare the email content
+     const emailContent = `
+     FIRST NAME: ${formData.firstName}
+     OTHER NAMES: ${formData.otherName}
+     GENDER: ${formData.gender}
+     PHONE NUMBER: ${formData.phone}
+     EMAIL ADDRESS:  ${formData.email}
+     AGE:  ${formData.age}
+     NATIONALITY: ${formData.nationality}
+     STATE OF RESIDENCE: ${formData.state}
+     COURSE: ${selected.course}
+     How did you hear about FUBA: ${selectConnect.connect}
+     GOAL OF FREELANCING: ${data.goal}
+     ADDITIONAL INFORMATION: ${data.addInfo}
+   `;
+console.log(emailContent)
+    // Send the data to the API route
+    try {
+      const response = await fetch('/api/sendMail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ emailContent }), // Pass email content in the body
+      });
+
+      if (response.ok) {
+        console.log('Email sent successfully');
+        setCreated(true);
+      } else {
+        console.error('Error sending email');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
   };
 
   return (
@@ -56,9 +94,9 @@ const SecondStep = () => {
       {/* <pre>{JSON.stringify(formData)}</pre> */}
     </div>) : 
     <>
-      <Providers>
-        <Box>
-          <div className="flex justify-center mt-[15px]">
+      {/* <Providers>
+        <Box> */}
+          <div className="flex justify-center mt-[35px]">
             <div className=" w-[100%]">
               <div className='lg:h-screen h-[466px] bg-[url("https://res.cloudinary.com/dmye53wps/image/upload/v1693050439/reghero_yhm1pe.png")] shadow-[#000000] bg-cover bg-center w-full '>
                 <div className="lg:max-w-7xl mx-auto w-full ">
@@ -71,12 +109,12 @@ const SecondStep = () => {
                 <div className="text-[18px] lg:text-[34px] text-[#fff] font-bold lg:mx-auto">
                   Registration Info.
                 </div>
-                <form onSubmit={handleSubmit(onHandleFormSubmit)}>
-                  <div className="mt-[19px]">
-                    <Listbox {...register("selected")} onChange={setSelected}>
-                      <div className="relative mt-1">
-                        <label htmlFor="other_name" className='text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto'>SELECT  COURSE</label>
-                        <Listbox.Button className="relative w-full cursor-default rounded-lg bg-none py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] z-30" >
+                <form onSubmit={handleSubmit(onHandleFormSubmit)} className="mx-auto flex flex-col">
+                  <div className="mt-[19px] flex flex-col">
+                    <Listbox {...register("course")} onChange={setSelected}>
+                      <div className="relative mt-[2.25rem] flex flex-col">
+                        <label htmlFor="other_name" className='text-[17px] lg:text-[24px] font-bold text-[#fff]'>SELECT  COURSE</label>
+                        <Listbox.Button className="relative lg:w-[485px] w-full mt-[8px] lg:h-[48px] cursor-default rounded-lg bg-none py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] z-30" >
                           <span className="block truncate">
                             {selected.course}
                           </span>
@@ -90,7 +128,7 @@ const SecondStep = () => {
                           leaveFrom="opacity-100 z-40"
                           leaveTo="opacity-0"
                         >
-                          <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                          <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50">
                             {people.map((person, personIdx) => (
                               <Listbox.Option
                                 key={personIdx}
@@ -129,11 +167,11 @@ const SecondStep = () => {
                       </div>
                     </Listbox>
                   </div>
-                  <div className="mt-[19px] ">
-                    <Listbox {...register("selectConnect")} onChange={setSelectConnect}>
-                      <div className="relative mt-1">
-                        <label htmlFor="other_name" className='text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto'>HOW DID YOU HEAR ABOUT FUBA?</label>
-                        <Listbox.Button className="relative w-full cursor-default rounded-lg bg-none py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] z-20">
+                  <div className="mt-[19px] flex flex-col">
+                    <Listbox {...register("connection")} onChange={setSelectConnect}>
+                      <div className="relative mt-[2.25rem] flex flex-col">
+                        <label htmlFor="other_name" className='text-[17px] lg:text-[24px] font-bold text-[#fff]'>HOW DID YOU HEAR ABOUT FUBA?</label>
+                        <Listbox.Button className="relative w-full cursor-default mt-[8px] rounded-lg bg-none py-2 pl-3 pr-10 text-left  bg-none py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] z-20">
                           <span className="block truncate z-20">
                             {selectConnect.connect}
                           </span>
@@ -147,7 +185,7 @@ const SecondStep = () => {
                           leaveFrom="opacity-100 z-20"
                           leaveTo="opacity-0"
                         >
-                          <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                          <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50">
                             {connection.map((person, personIdx) => (
                               <Listbox.Option
                                 key={personIdx}
@@ -182,13 +220,13 @@ const SecondStep = () => {
                       </div>
                     </Listbox>
                   </div>
-                  <div className="mt-[19px]">
-                  <label htmlFor="other" className='text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto '>WHAT IS YOUR GOAL OF FREELANCING?</label>
-                  <textarea placeholder="Type..." {...register("goal")} className="w-[337px] h-[106px] rounded-[5px] border shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] bg-[#0000] pt-[9px] pl-[15px] mt-[10px] " id="message" />
+                  <div className="mt-[19px] flex flex-col">
+                  <label htmlFor="other" className='text-[17px] lg:text-[24px] font-bold text-[#fff] '>WHAT IS YOUR GOAL OF FREELANCING?</label>
+                  <textarea placeholder="Type..." {...register("goal")} className="lg:w-[485px] w-[337px] lg:h-[48px]  h-[106px] mt-[8px] rounded-[5px] border shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] bg-[#0000] pt-[9px] pl-[15px] mt-[10px] " id="message" />
                   </div>
-                  <div className="mt-[19px]">
-                  <label htmlFor="other" className='text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto '>ADDITIONAL INFORMATION</label>
-                  <textarea placeholder="Type..." {...register("addInfo")} className="w-[337px] h-[106px] rounded-[5px] border shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] bg-[#0000] pt-[9px] pl-[15px] mt-[10px] " id="message" />
+                  <div className="mt-[19px] flex flex-col">
+                  <label htmlFor="other" className='text-[17px] lg:text-[24px] font-bold text-[#fff] '>ADDITIONAL INFORMATION</label>
+                  <textarea placeholder="Type..." {...register("addInfo")} className="lg:w-[485px] w-[337px] lg:h-[48px] mt-[8px] h-[106px] rounded-[5px] border shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] bg-[#0000] pt-[9px] pl-[15px] mt-[10px] " id="message" />
                   </div>
                   <div className="mt-[19px] mb-[17px]">
                   <input type="checkbox" id="checkbox" className="black"/>
@@ -201,8 +239,8 @@ const SecondStep = () => {
               <LearnFoot />
             </div>
           </div>
-        </Box>
-      </Providers>
+        {/* </Box>
+      </Providers> */}
     </>
   );
 };

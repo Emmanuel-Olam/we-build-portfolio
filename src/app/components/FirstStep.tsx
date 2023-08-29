@@ -92,7 +92,7 @@ const FirstStep = () => {
   return (
     // <Providers>
       // <Box>
-        <div id="#background" className="flex justify-center mt-[15px]">
+        <div id="#background" className="flex justify-center mt-[35px]">
           <div className=" w-[100%]">
             <div className='lg:h-screen h-[466px] bg-[url("https://res.cloudinary.com/dmye53wps/image/upload/v1692970506/learnhero_s2c0ye.svg")] shadow-[#000000] bg-cover bg-center w-full '>
               <div className="lg:max-w-7xl mx-auto w-full ">
@@ -105,32 +105,32 @@ const FirstStep = () => {
               <div className="text-[18px] lg:text-[34px] text-[#fff] font-bold lg:mx-auto">
                 Personal Information
               </div>
-              <form className="lg:w-[768px]" onSubmit={handleSubmit(onHandleFormSubmit)} >
-                <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
+              <form className="mx-auto flex flex-col" onSubmit={handleSubmit(onHandleFormSubmit)} >
+                <div className=" mt-[19px] flex flex-col lg:mt-[15px] mb-[11px] lg:mb-[20px] ">
                   <label
                     htmlFor="first_name"
-                    className="text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto"
+                    className="text-[17px] lg:text-[24px] font-bold text-[#fff]"
                   >
                     FIRST NAME
                   </label>
                   <input
                     // name="firstName"
-                    className="lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
+                    className="lg:w-[485px] w-[337px] h-[33px] lg:h-[48px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
                     placeholder="Enter"
                     {...register("firstName")}
                     required={true}
                     // onChange={handleInputChange}
                   />
                 </div>
-                <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
+                <div className=" mt-[19px] flex flex-col  lg:mt-[15px] mb-[11px] lg:mb-[20px] ">
                   <label
                     htmlFor="other_name"
-                    className="text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto"
+                    className="text-[17px] lg:text-[24px] font-bold text-[#fff]"
                   >
                     OTHER NAMES
                   </label>
                   <input
-                    className="lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
+                    className="lg:w-[485px] w-[337px] h-[33px] lg:h-[48px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
                     placeholder="Enter"
                     // name="otherName"
                     type="name"
@@ -138,15 +138,15 @@ const FirstStep = () => {
                     required={true}
                   />
                 </div>
-                <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
+                <div className=" mt-[19px] flex flex-col lg:mt-[15px] mb-[11px] lg:mb-[20px] ">
                   <label
                     htmlFor="gender"
-                    className="text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto"
+                    className="text-[17px] lg:text-[24px] font-bold text-[#fff]"
                   >
                     GENDER
                   </label>
                   <input
-                    className="lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
+                    className="lg:w-[485px] w-[337px] h-[33px] lg:h-[48px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
                     placeholder="Enter"
                     type="name"
                     // name="gender"
@@ -155,27 +155,27 @@ const FirstStep = () => {
                     // onChange={handleInputChange}
                   />
                 </div>
-                <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
+                <div className=" mt-[19px] flex flex-col lg:mt-[15px] mb-[11px] lg:mb-[20px] ">
                   <label
                     htmlFor="phone"
-                    className="text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto"
+                    className="text-[17px] lg:text-[24px] font-bold text-[#fff]"
                   >
                     PHONE NUMBER
                   </label>
                   <input
-                    className="lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
+                    className="lg:w-[485px] w-[337px] h-[33px] lg:h-[48px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
                     placeholder="Enter"
                   />
                 </div>
-                <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
+                <div className=" mt-[19px] flex flex-col lg:mt-[15px] mb-[11px] lg:mb-[20px] ">
                   <label
                     htmlFor="email"
-                    className="text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto"
+                    className="text-[17px] lg:text-[24px] font-bold text-[#fff]"
                   >
                     EMAIL ADDRESS
                   </label>
                   <input
-                    className="lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
+                    className="lg:w-[485px] w-[337px] h-[33px] lg:h-[48px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
                     placeholder="Enter"
                     type="email"
                     // name="email"
@@ -184,15 +184,15 @@ const FirstStep = () => {
                     // onChange={handleInputChange}
                   />
                 </div>
-                <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
+                <div className=" mt-[19px] flex flex-col lg:mt-[15px] mb-[11px] lg:mb-[20px] ">
                   <label
                     htmlFor="age"
-                    className="text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto"
+                    className="text-[17px] lg:text-[24px] font-bold text-[#fff]"
                   >
                     AGE
                   </label>
                   <input
-                    className="lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
+                    className="lg:w-[485px] w-[337px] h-[33px] lg:h-[48px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
                     placeholder="Enter"
                     type="name"
                     // name="age"
@@ -200,15 +200,15 @@ const FirstStep = () => {
                     // onChange={handleInputChange}
                   />
                 </div>
-                <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
+                <div className=" mt-[19px] flex flex-col lg:mt-[15px] mb-[11px] lg:mb-[20px] ">
                   <label
                     htmlFor="nationality"
-                    className="text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto"
+                    className="text-[17px] lg:text-[24px] font-bold text-[#fff]"
                   >
                     NATIONALITY
                   </label>
                   <input
-                    className="lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
+                    className="lg:w-[485px] w-[337px] h-[33px] lg:h-[48px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
                     placeholder="Enter"
                     type="name"
                     // name="nationality"
@@ -217,15 +217,15 @@ const FirstStep = () => {
                     // onChange={handleInputChange}
                   />
                 </div>
-                <div className=" mt-[19px] lg:mt-[30px] mb-[11px] lg:mb-[20px] ">
+                <div className=" mt-[19px] flex flex-col lg:mt-[15px] mb-[11px] lg:mb-[20px] ">
                   <label
                     htmlFor="state"
-                    className="text-[17px] lg:text-[24px] font-bold text-[#fff] lg:mx-auto"
+                    className="text-[17px] lg:text-[24px] font-bold text-[#fff]"
                   >
                     STATE OF RESIDENCE
                   </label>
                   <input
-                    className="lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
+                    className="lg:w-[485px] w-[337px] h-[33px] lg:h-[48px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] mt-[8px] "
                     placeholder="Enter"
                     type="name"
                     // name="state"
