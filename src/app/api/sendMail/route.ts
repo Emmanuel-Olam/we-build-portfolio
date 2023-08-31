@@ -15,8 +15,9 @@ export default async function sendMail(req: NextApiRequest, res: NextApiResponse
       from: 'aniyikayeolamide3@gmail.com', // Your dedicated email account
       to: 'futurebuildersagency@gmail.com', // Recipient's email address
       subject: 'New Form Submission',
-      text: emailContent,
+      html: emailContent,
     });
+    console.log(emailContent)
 
     console.log('Email sent:', info.response);
     return res.status(200).json({ message: 'Email sent successfully' });
@@ -24,4 +25,5 @@ export default async function sendMail(req: NextApiRequest, res: NextApiResponse
     console.error('Error sending email:', error);
     return res.status(500).json({ error: 'An error occurred while sending the email' });
   }
+  
 }

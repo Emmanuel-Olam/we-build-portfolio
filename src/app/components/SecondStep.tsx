@@ -73,7 +73,7 @@ console.log(emailContent)
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ emailContent }), // Pass email content in the body
+        body: JSON.stringify({ emailContent }),
       });
 
       if (response.ok) {
