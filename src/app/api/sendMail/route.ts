@@ -1,29 +1,25 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import transporter from '../../components/mailer';
+import { NextResponse } from 'next/server';
 
-// Handle POST request
-export default async function sendMail(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).end(); // Method Not Allowed
-  }
-
+export async function POST(request: Request) {
   try {
-    const { emailContent } = req.body;
+    const { emailContent } = await request.json();
 
-    // Send the email
     const info = await transporter.sendMail({
       from: 'aniyikayeolamide3@gmail.com', // Your dedicated email account
       to: 'futurebuildersagency@gmail.com', // Recipient's email address
       subject: 'New Form Submission',
-      html: emailContent,
+      text: emailContent,
     });
-    console.log(emailContent)
 
-    console.log('Email sent:', info.response);
-    return res.status(200).json({ message: 'Email sent successfully' });
+    console.log("Email sent:", info.response);
+    return NextResponse.json({ message: "Email sent successfully" });
+
   } catch (error) {
-    console.error('Error sending email:', error);
-    return res.status(500).json({ error: 'An error occurred while sending the email' });
+    console.error("Error sending mail:", error);
+    return NextResponse.json({
+      error: "An error occured while sending the mail"
+    })
   }
-  
 }
