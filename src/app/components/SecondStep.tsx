@@ -144,8 +144,8 @@ console.log(emailContent)
                                 {({ selected }) => (
                                   <>
                                     <span
-                                      className={`block truncate ${
-                                        selected ? "font-medium" : "font-normal"
+                                      className={`block truncate font-extrabold ${
+                                        selected ? "font-extrabold" : "font-normal"
                                       }`}
                                     >
                                       {person.course}
@@ -172,7 +172,7 @@ console.log(emailContent)
                       <div className="relative mt-[2.25rem] flex flex-col">
                         <label htmlFor="other_name" className='text-[17px] lg:text-[24px] font-bold text-[#fff]'>HOW DID YOU HEAR ABOUT FUBA?</label>
                         <Listbox.Button className="relative w-full cursor-default mt-[8px] rounded-lg bg-none py-2 pl-3 pr-10 text-left  bg-none py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm lg:w-[372px] w-[337px] h-[33px] pl-[16px] rounded-[5px] border border-[#A09CB9] bg-[#0000] focus:ring-[#0000] z-20">
-                          <span className="block truncate z-20">
+                          <span className="block truncate font-extrabold z-20">
                             {selectConnect.connect}
                           </span>
                           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -202,7 +202,7 @@ console.log(emailContent)
                                   <>
                                     <span
                                       className={`block truncate ${
-                                        selected ? "font-medium" : "font-normal"
+                                        selected ? "font-extrabold" : "font-extrabold"
                                       }`}
                                     >
                                       {person.connect}
