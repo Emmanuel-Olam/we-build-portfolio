@@ -6,3 +6,18 @@ html,
 body {
   scroll-behavior: smooth;
 }
+.contact {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-stack {
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 320px) and (max-width: 450px) {
+  .hero-stack {
+    margin-top: 50px;
+  }
+}

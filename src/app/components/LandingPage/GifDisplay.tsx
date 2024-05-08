@@ -15,14 +15,14 @@ const GIFDisplay: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentGIFIndex((prevIndex) => (prevIndex + 1) % GIFs.length);
-    }, 8000);
+    }, 8500);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div>
-      <Image src={`/gifs/${GIFs[currentGIFIndex]}`} alt={`GIF ${currentGIFIndex + 1}`} width={500} height={400} />
+      <Image src={`/gifs/${GIFs[currentGIFIndex]}`} alt={`GIF ${currentGIFIndex + 1}`} width={400} height={400} />
     </div>
   );
 };

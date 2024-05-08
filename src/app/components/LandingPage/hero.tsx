@@ -22,7 +22,7 @@ export default function Hero() {
       overflow={'hidden'}
     >
       <Container maxW="container.xl">
-        <Stack
+        <Stack className='hero-stack'
           direction={{ base: 'column', md: 'row' }}
           gap={{
             base: 10,
