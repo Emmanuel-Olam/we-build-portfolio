@@ -13,6 +13,7 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import GIFDisplay from './GifDisplay';
 
 export default function Hero() {
   return (
@@ -48,12 +49,9 @@ export default function Hero() {
             <Stack spacing={6} w={'full'} maxW={'lg'}>
               <Heading fontSize={{ base: '4xl', lg: '5xl' }}>
                 <Text color={'white'} as={'span'}>
-                  ABDULKAREEM O.
+                Elevate Your Digital Experience.
                 </Text>
               </Heading>
-              <Text fontSize={20}>
-                Blockchain/ Web Developer
-              </Text>
               <Text
                 maxW={'420px'}
                 color={'white'}
@@ -62,7 +60,7 @@ export default function Hero() {
                   sm: 'auto',
                 }}
               >
-                {`We help build decentralized applications and smart contracts based on blockchain technology. As well as Web  & Mobile App Development`}
+                {`We are architects of transformative technology, dedicated to crafting bespoke software solutions tailored to our clients' unique needs. With a team of seasoned developers, designers, and strategists, we specialize in creating cutting-edge applications, web platforms, and mobile solutions that propel businesses forward in the digital age.`}
               </Text>
               <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
 
@@ -93,24 +91,7 @@ export default function Hero() {
             align={'center'}
             justify={'center'}
           >
-            <Circle
-              size='400px'
-              bg={MAIN_COLOR}
-              position={'absolute'}
-              zIndex={1}
-              top={'19%'}
-              left={'50%'}
-              transform={'translateX(-50%)'}
-            ></Circle>
-            <Image
-              alt='Login Image' src="https://res.cloudinary.com/dpfpplv6k/image/upload/v1691016124/FUBA/IMG_8959_copy_ivipd8.png"
-              width={'700px'}
-              height={'400px'}
-              objectFit={'cover'}
-              objectPosition={'top'}
-              position={'relative'}
-              zIndex={2}
-            />
+          <GIFDisplay />
           </Flex>
         </Stack>
       </Container>
