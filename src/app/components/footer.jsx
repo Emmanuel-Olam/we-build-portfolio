@@ -32,9 +32,14 @@ export default function Footer() {
                   <a href="tel:+2349018429887">+234 901 842 9887</a>
                 </Text>
               </HStack>
+              <HStack spacing="4">
+                <Text>Address: </Text>
+                <Text color={QUATERNARY_COLOR}>
+                  55, Thailand Street, Daha, Abuja, Nigeria.
+                </Text>
+              </HStack>
             </VStack>
           </Box>
-
           <Box>
             <Text textAlign="center" fontSize="xl" color={MAIN_COLOR} mb={4}>
               Follow Us

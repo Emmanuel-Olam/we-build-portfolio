@@ -22,7 +22,7 @@ export default function ContactUs() {
   };
 
   return (
-    <Box id="contact" bg={'blackAlpha.700'}>
+    <Box id="contact" bg={'blackAlpha.700'} className="contact">
 
       <Flex
         alignItems={'stretch'}
