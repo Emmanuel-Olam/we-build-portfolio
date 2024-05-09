@@ -17,11 +17,10 @@ import GIFDisplay from './GifDisplay';
 
 export default function Hero() {
   return (
-    <Box position={'relative'}
-
+    <Box position={'relative'} className='overflow-hidden'
       overflow={'hidden'}
     >
-      <Container maxW="container.xl">
+      <Container maxW="container.xl" className='overflow-hidden'>
         <Stack className='hero-stack'
           direction={{ base: 'column', md: 'row' }}
           gap={{
@@ -47,12 +46,12 @@ export default function Hero() {
             }}
           >
             <Stack spacing={6} w={'full'} maxW={'lg'}>
-              <Heading fontSize={{ base: '4xl', lg: '5xl' }}>
+              <Heading fontSize={{ base: '4xl', lg: '5xl' }} data-aos="fade-up" className='overflow-hidden'>
                 <Text color={'white'} as={'span'}>
                 Elevate Your Digital Experience.
                 </Text>
               </Heading>
-              <Text
+              <Text data-aos="fade-up" className='overflow-hidden'
                 maxW={'420px'}
                 color={'white'}
                 margin={{
@@ -85,7 +84,7 @@ export default function Hero() {
               </Stack>
             </Stack>
           </Flex>
-          <Flex
+          <Flex  data-aos="fade-right" className='overflow-hidden'
             flex={1}
             position={'relative'}
             align={'center'}

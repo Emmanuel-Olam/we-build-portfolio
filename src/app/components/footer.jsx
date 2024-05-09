@@ -3,7 +3,7 @@ import { Box, Container, HStack, Heading, Image, Text, VStack } from "@chakra-ui
 
 export default function Footer() {
   return (
-    <Box bg={TERTIARY_COLOR} color={'black'} p={3}>
+    <Box bg={TERTIARY_COLOR} color={'black'} p={3}  data-aos="fade-in"  className='overflow-hidden '>
 
       <Container maxW="container.xl" centerContent>
 

@@ -30,7 +30,7 @@ export function Projects() {
   const projects = projectKind ? projectsData?.filter(project => project.kind === projectKind) : projectsData
 
   return (
-    <Box py={'4rem'} id='portfolio'>
+    <Box py={'4rem'} id='portfolio' data-aos="fade-up"  className='overflow-hidden '>
 
       <Flex
         justifyContent={{

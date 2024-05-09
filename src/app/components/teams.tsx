@@ -31,7 +31,7 @@ export function Teams() {
   ];
 
   return (
-    <Container
+    <Container  data-aos="zoom-in"  className='overflow-hidden '
       py={'4rem'}
       px={0}
       maxW={{

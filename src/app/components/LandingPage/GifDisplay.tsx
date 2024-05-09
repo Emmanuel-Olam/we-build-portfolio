@@ -21,7 +21,7 @@ const GIFDisplay: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className='overflow-hidden'>
       <Image src={`/gifs/${GIFs[currentGIFIndex]}`} alt={`GIF ${currentGIFIndex + 1}`} width={450} height={400} />
     </div>
   );

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { TERTIARY_COLOR } from '@/constant';
 
 const services = [
-  {
+  { 
     icon: <Image src="/icons/blockchain.png" width={70} height={70} alt="100" />,
     title: "Blockchain Development",
     description: "We create shared, unchangeable, distributed ledger technology (DLT) that securely records transactions and tracks assets within a network.",
@@ -26,7 +26,7 @@ export function Services() {
       py={"4rem"}
       pt={'8rem'}
     >
-      <Text
+      <Text data-aos="fade-left"  className='overflow-hidden '
         fontSize={'2rem'}
         fontWeight={600}
         mb={10}
@@ -48,7 +48,7 @@ export function Services() {
       >
         {
           services.map((service, index) => (
-            <VStack
+            <VStack data-aos="fade-right" className='overflow-hidden'
               key={index}
               bg={TERTIARY_COLOR}
               color={'black'}

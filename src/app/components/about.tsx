@@ -62,7 +62,7 @@ export function AboutUs() {
           <Image src="/about/2.png" width={370} height={370} alt="100" />
         </Box>
 
-        <VStack
+        <VStack data-aos="fade-down" className='overflow-hidden '
           fontWeight={500}
           maxW={'470px'}
           textAlign={'center'}

@@ -28,7 +28,7 @@ const points = [
 
 export function Points() {
   return (
-    <Flex
+    <Flex  data-aos="fade-up"  className='overflow-hidden '
       bgGradient={`linear(to-b, ${SECONDARY_COLOR}, #05113D00)`}
       pt={12}
       pb={10}

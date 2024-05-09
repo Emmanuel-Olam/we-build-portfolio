@@ -40,7 +40,7 @@ export function Reviews() {
   } />
 
   return (
-    <Container
+    <Container data-aos="fade-in"  className='overflow-hidden '
       py={'4rem'}
       px={0}
       maxW={{
