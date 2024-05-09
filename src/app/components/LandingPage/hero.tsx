@@ -65,7 +65,7 @@ export default function Hero() {
               <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
 
                 <Link href="#contact"><Button
-                  rounded={'md'}
+                  rounded={'md'} className='talkbtn'
                   size={'lg'}
                   bg={MAIN_COLOR}
                   color={'white'}
@@ -92,6 +92,10 @@ export default function Hero() {
             justify={'center'}
           >
           <GIFDisplay />
+          {/* <div className=' video-container'>
+                    <video loop className="lg:w-[485px] " autoPlay muted>
+                        <source src="/tiny.mp4" type="video/mp4" />
+                    </video></div> */}
           </Flex>
         </Stack>
       </Container>
@@ -111,7 +115,7 @@ export default function Hero() {
         zIndex={3}
       >
         <Link
-          href='#'
+          href='https://www.linkedin.com/company/future-builders-agency/'
           opacity={0.8}
           _hover={{
             opacity: 1,
@@ -121,7 +125,7 @@ export default function Hero() {
           <Image alt='Login Image' src="/icons/linkedin.png" />
         </Link>
         <Link
-          href='#'
+          href='https://twitter.com/FUBAgency'
           opacity={0.8}
           _hover={{
             opacity: 1,

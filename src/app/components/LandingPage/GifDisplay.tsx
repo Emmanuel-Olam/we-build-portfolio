@@ -22,7 +22,7 @@ const GIFDisplay: React.FC = () => {
 
   return (
     <div>
-      <Image src={`/gifs/${GIFs[currentGIFIndex]}`} alt={`GIF ${currentGIFIndex + 1}`} width={400} height={400} />
+      <Image src={`/gifs/${GIFs[currentGIFIndex]}`} alt={`GIF ${currentGIFIndex + 1}`} width={450} height={400} />
     </div>
   );
 };
