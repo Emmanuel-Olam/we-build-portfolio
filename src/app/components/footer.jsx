@@ -47,10 +47,10 @@ export default function Footer() {
 
             <HStack spacing="4" justify={'center'}>
 
-              <Text color={QUATERNARY_COLOR}><a href="#">
+              <Text color={QUATERNARY_COLOR}><a href="https://www.linkedin.com/company/future-builders-agency/">
                 <Image alt='Login Image' src="/icons/linkedin.png" /></a>
               </Text>
-              <Text color={QUATERNARY_COLOR}><a href="#">
+              <Text color={QUATERNARY_COLOR}><a href="https://twitter.com/FUBAgency">
                 <Image alt='Login Image' src="/icons/twitter.png" /></a>
               </Text>
               <Text color={QUATERNARY_COLOR}><a href="#">
